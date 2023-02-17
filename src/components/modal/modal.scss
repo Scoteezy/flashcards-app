@@ -1,0 +1,71 @@
+
+.modal{
+    font-family: 'Roboto', sans-serif;
+    height: 60vh;
+    width: 100vh;
+    background: #fff;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border: 1px solid rgba(0,0,0, .1);
+    border-radius: 10%;
+    opacity: 0;
+    transition: all 0.5s;
+    pointer-events: none;
+    &__active{
+    opacity: 1;
+        pointer-events: all;
+    }
+    &__content{
+    border-radius: 12px;
+    width: 100%;
+    transform: scale(0.5);
+    transition: 0.4s all;
+    position: relative;
+        &-active{
+        transform: scale(1);
+
+    }
+    }
+    &__exit{
+        position: absolute;
+        top: 0;
+        right: 40px;
+        background-color: #587ef4;
+        height: 50px;
+        width: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius:50%;
+        cursor: pointer;
+        border:none;
+    }
+    &__title{
+        text-align: center;
+        font-size: 42px;
+        margin-bottom: 120px;
+    }
+    form{
+        margin: 0 50px 0 50px;
+    }
+    &__subtitle{
+        display: block;
+        margin: 0 auto;
+        font-weight: 500;
+        margin-bottom: 0.3em;
+    }
+    textarea{
+       width: 100%;
+       padding: 0.7em, 0.5em;
+       border: 1px solid #d0d0d0;
+       outline: none;
+       color: #414a67;
+       border-radius: 0.3em;
+       resize: none;
+    }
+    textarea:not(:last-child){
+        margin-bottom: 1.2em;
+    }
+}

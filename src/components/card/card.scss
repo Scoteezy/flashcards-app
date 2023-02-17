@@ -1,0 +1,32 @@
+.card{
+    font-family: 'Roboto', sans-serif;
+    max-width: 300px;
+    padding: 20px;
+    border: 1px solid rgba(0,0,0, .1);
+    border-radius: 10%;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    &__title{
+        font-size: 20px;
+
+    }
+    &__descr{
+        font-size: 15px;
+        color: #6f6f6f;
+        margin-top: 15px;
+    }
+    &__icons{
+        margin-top: 15px;
+        display: flex;
+        justify-content: flex-end;
+    }
+    &__icon{
+        cursor: pointer;
+        padding: 0;
+        display: block;
+        border: none;
+        background: #fff;
+    }
+    
+}
