@@ -12,3 +12,4 @@ Live Prewiev: [Click Here](https://flashcards-app-rho.vercel.app/)
 2. Enjoy.
 ## 🤝  Contributing
 Contributions, issues and feature requests are welcome! 😍
+## ✨ Dont forget to give repo a star!
