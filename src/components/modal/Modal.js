@@ -5,7 +5,6 @@ import './modal.scss'
 import {ReactComponent as Close} from './close.svg';
 
 const Modal = ({modal,onAdd,changeModal,prevTitle,prevDescr})=>{
-    console.log(prevTitle,prevDescr)
     const [title,setTitle] = useState(prevTitle);
     const [descr, setDescr] = useState(prevDescr);
     const onValueChange =(e)=>{
