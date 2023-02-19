@@ -3,34 +3,23 @@ import Card from '../card/Card'
 import '../../style/container.scss'
 import './Cards.scss'
 
-const Cards = ({title,description})=>{
+const Cards = ({cards,onDelete})=>{    
 
-
-
-    // const element = data.map(item=>{
-    // const {id, ...itemProps}=item;
-    //     return(
-    //         <Card
-    //         key={id}
-    //         {...itemProps}
-
-    //         />
-    //     )
-    // })
+    const elements = cards.map(item=>{
+    const {id,title, ...itemProps}=item;
+        return(
+            <Card
+            key={id}
+            {...itemProps}
+            title={title}
+            onDelete={()=>onDelete(title,id)}   
+            />
+        )
+    })
     return(
         <div className="cards">
             <div className="cards__container">
-            <Card/>
-            <Card/>
-            <Card/>
-            <Card/>
-            <Card/>
-            <Card/>
-            <Card/>
-            <Card/>
-            <Card/>
-            <Card/>
-            <Card/>
+            {elements}
             </div>
         </div>
     )

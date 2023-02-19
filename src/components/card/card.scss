@@ -20,6 +20,10 @@
         margin-top: 15px;
         display: flex;
         justify-content: flex-end;
+        button{
+            width: 30px;
+            height: 30px;
+        }
     }
     &__icon{
         cursor: pointer;
