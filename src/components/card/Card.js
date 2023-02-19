@@ -6,7 +6,7 @@ import {ReactComponent as EditIcon} from './pen_icon.svg';
 import {ReactComponent as DelIcon} from './del_icon.svg';
 
 
-const Card = ({title,descr,onDelete,id})=>{
+const Card = ({title,descr,onDelete,getPrevInfo,changeItem})=>{
     const [show, setShow] = useState(false);
     let visibility = 'none';
     const changeVisibility=()=>{
@@ -19,7 +19,13 @@ const Card = ({title,descr,onDelete,id})=>{
             <button className="button button_card" onClick={changeVisibility}>Show/Hide</button>
             <div className="card__descr" style={{'display': visibility}}>{descr}</div>
             <div className="card__icons">
-            <button className='card__icon' >
+            <button 
+            onClick={()=>{
+                getPrevInfo();
+                changeItem();
+            }}
+            
+            className='card__icon' >
                 <EditIcon  style={{'width': '30px', 'height' : '20px', 'color' : '#587ef4'}}/>
             </button>
             <button 

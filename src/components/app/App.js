@@ -10,14 +10,15 @@ import './App.css';
 function App() {
   const [items,setItems] = useState([]);
   const [modal, setModal] = useState(false);
-
+  const [prevTitle, setPrevTitle] = useState('');
+  const [prevDescr, setPrevDescr] = useState('');
   useEffect(()=>{
     for(let i=0; i<localStorage.length; i++) {
       let key = localStorage.key(i);
       const newItem = {
         title: key, 
         descr: localStorage.getItem(key),
-        id:Date.now()
+        id:Math.random()
       }
         setItems(items => [...items,newItem]);
     }
@@ -30,7 +31,7 @@ function App() {
     const newItem = {
       title: title,
       descr : descr,
-      id:Date.now()
+      id:Math.random()
     }
     setItems(items => [...items,newItem]);
     localStorage.setItem(title, descr);
@@ -40,14 +41,30 @@ function App() {
     localStorage.removeItem(title);
     setItems(items => items.filter((item)=>item.id!==id));
   } 
+  const getPrevInfo = (title)=>{
+    const prevTitle = title;
+    const prevDescr = localStorage.getItem(title);
+    setPrevTitle(prevTitle);
+    setPrevDescr(prevDescr); 
+  }
+  const changeItem = (title)=>{
+    setModal(true);
+    localStorage.removeItem(title);
+    setItems(items => items.filter((item)=>item.title!==title));
+
+  }
   return (
-   <div className="container">
+   <div className="container" >
       <Header changeModal={openModal} modal={modal}/>
-      <Cards 
+      <Cards
       cards={items}
       onDelete={onDelItem}
+      getPrevInfo={getPrevInfo}
+      changeItem={changeItem}
       />
-      <Modal 
+      <Modal
+      prevTitle={prevTitle}
+      prevDescr={prevDescr}
       changeModal={openModal} 
       modal={modal}
       onAdd={onAddItem}

@@ -3,7 +3,7 @@ import Card from '../card/Card'
 import '../../style/container.scss'
 import './Cards.scss'
 
-const Cards = ({cards,onDelete})=>{    
+const Cards = ({cards,onDelete,getPrevInfo,changeItem})=>{    
 
     const elements = cards.map(item=>{
     const {id,title, ...itemProps}=item;
@@ -12,12 +12,14 @@ const Cards = ({cards,onDelete})=>{
             key={id}
             {...itemProps}
             title={title}
-            onDelete={()=>onDelete(title,id)}   
+            onDelete={()=>onDelete(title,id)}
+            getPrevInfo={()=>getPrevInfo(title)}
+            changeItem={()=>{changeItem(title)}}
             />
         )
     })
     return(
-        <div className="cards">
+        <div className="cards" >
             <div className="cards__container">
             {elements}
             </div>
