@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import '../../style/button.scss'
 import '../../style/container.scss'
 import './header.scss'

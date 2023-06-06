@@ -1,27 +1,37 @@
 import { useState } from 'react';
 import { useEffect } from 'react';
-
+import { useDispatch,useSelector } from 'react-redux';
+import {addFlashcard,deleteFlashcard,setChange} from '../../store/flashcardSlice'
 import './modal.scss'
 import {ReactComponent as Close} from './close.svg';
-
-const Modal = ({modal,onAdd,changeModal,prevTitle,prevDescr})=>{
-    const [title,setTitle] = useState(prevTitle);
-    const [descr, setDescr] = useState(prevDescr);
+const Modal = ({modal,changeModal})=>{
+    const dispatch = useDispatch();
+    const flashcards= useSelector(store => store.flashcards.flashcards);
+    const changedFlashcard = flashcards.find(flashcard=>flashcard.isChanged===true);
+    const [title,setTitle] = useState();
+    const [description, setDescription] = useState();
     const onValueChange =(e)=>{
-        e.target.name ==='title'? setTitle(e.target.value) : setDescr(e.target.value);
+        e.target.name ==='title'? setTitle(e.target.value) : setDescription(e.target.value);
     }
     const onSubmit =(e)=>{
         e.preventDefault();
-        onAdd(title,descr)
+        // onAdd(title,descr)
+        dispatch(addFlashcard({title,description}))
         setTitle('');
-        setDescr('');
+        setDescription('');
         changeModal(!modal)
     }
-
+    console.log('asdfasdf')
     useEffect(()=>{
-    setTitle(prevTitle);
-    setDescr(prevDescr);
-    },[prevTitle,prevDescr])
+        console.log(changedFlashcard)
+        if(changedFlashcard){
+            setTitle(changedFlashcard.title);
+            setDescription(changedFlashcard.description);
+            dispatch(setChange({id:changedFlashcard.id}))
+            dispatch(deleteFlashcard({id:changedFlashcard.id}))
+        }
+  
+    },[changedFlashcard,dispatch])
 
     return(
         <div className={modal ? 'modal modal__active': 'modal'}>
@@ -46,7 +56,7 @@ const Modal = ({modal,onAdd,changeModal,prevTitle,prevDescr})=>{
                     required
                     type='text'
                     name='descr'
-                    value={descr}
+                    value={description}
                     onChange={onValueChange}
                     placeholder="Type the answer here..."></input>
                     <button className="button button_modal">Save</button>
