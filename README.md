@@ -7,6 +7,11 @@ Live Prewiev: [Click Here](https://flashcards-app-rho.vercel.app/)
 * Edit cards
 * Delete cards
 * It uses local storage in your browser, so your cards will always be with you.
+## ⚙️ Tech 
+* React + redux-tool-kit
+* sass
+* redux-persist
+* create w/ cra 
 ## ⚙️ Usage 
 1. Go in Live Prewiev
 2. Enjoy.
